@@ -16,7 +16,11 @@ void zadanie1() {
 			if (a[i] < min) min = a[i];
 			i++;
 		}
-
+		printf("Массив: ");
+		for (int i = 0; i < 10; i++) {
+			printf("%d ", a[i]);
+		}
+		printf("\n");
 		printf("Минимальный элемент массива: %d Максимальный элемент массива: %d\n", min, max);
 		
 }

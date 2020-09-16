@@ -1,13 +1,12 @@
 ﻿  source.cpp
-C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(106,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(110,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : см. объявление "scanf"
-C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(107,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(111,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : см. объявление "scanf"
-C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(108,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(112,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : см. объявление "scanf"
-C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(109,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(113,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : см. объявление "scanf"
-C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(115,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\lab1alo\source.cpp(119,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : см. объявление "scanf"
-  LINK : не найден или не выполнена сборка C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\Debug\lab1alo.exe при последней инкрементной компоновке; выполняется полная компоновка
   lab1alo.vcxproj -> C:\Users\user\Desktop\ЛабЫ\2 курс\логика\lab1alo\Debug\lab1alo.exe
