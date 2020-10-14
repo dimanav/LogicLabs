@@ -119,7 +119,7 @@ void zadanie5(){
 	scanf("%s",vvod);
 
 	for (i=0;i<3;i++){
-		if (strcmp(vvod, stud[i].famil) == 0) {
+		if ((strcmp(vvod, stud[i].famil) == 0) || (strcmp(vvod, stud[i].name) == 0) || (strcmp(vvod, stud[i].facult) == 0) || (vvod = stud[i].Nomzach)) {
 			printf("Cтудент %s %s обучается на факультете %s, номер зачётной книжки %d \n", stud[i].famil, stud[i].name, stud[i].facult, stud[i].Nomzach); break;
 		}
 		else { printf("Студент с фамилией %s не найден", vvod); break; }
