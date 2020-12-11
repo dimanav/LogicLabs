@@ -11,6 +11,9 @@
 using namespace std;
 
 void printMatrix(int** matrix, int n, ofstream &fout) {
+    cout << "Исходная матрица: " << endl;
+    fout << "Исходная матрица: " << endl;
+    fout << "Количество вершин: " << n << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
                 cout << matrix[i][j] << " ";
@@ -19,6 +22,8 @@ void printMatrix(int** matrix, int n, ofstream &fout) {
         cout << endl;
         fout << endl;
     }
+    cout << endl;
+    fout << endl;
 }
 
 //matrix - матрица смежности
@@ -111,16 +116,11 @@ int main(int argc, char** argv) {
             
         
 
-        cout << "Исходная матрица: " << endl;
-        fout << "Исходная матрица: " << endl;
-        fout << "Количество вершин: " << n << endl;
+        
         printMatrix(matrix, n, fout);
         originalFloydWarshall(matrix, n);
-        cout << endl;
-        fout << endl;
-        cout << "Полученная матрица: " << endl;
-        fout << "Полученная матрица: " << endl;
-        fout << "Количество вершин: " << n << endl;
+        
+        
         printMatrix(matrix, n, fout);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
@@ -166,16 +166,10 @@ int main(int argc, char** argv) {
             }
         }
 
-        cout << "Исходная матрица: " << endl;
-        fout << "Исходная матрица: " << endl;
-        fout << "Количество вершин: " << n << endl;
+        
         printMatrix(matrix, n, fout);
         originalFloydWarshall(matrix, n);
-        cout << endl;
-        fout << endl;
-        cout << "Полученная матрица: " << endl;
-        fout << "Полученная матрица: " << endl;
-        fout << "Количество вершин: " << n << endl;
+        
         printMatrix(matrix, n, fout);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
@@ -216,16 +210,10 @@ int main(int argc, char** argv) {
 
         file.close();
 
-        cout << "Исходная матрица: " << endl;
-        fout << "Исходная матрица: " << endl;
-        fout << "Количество вершин: " << n << endl;
+        
         printMatrix(matrix, n, fout);
         originalFloydWarshall(matrix, n);
-        cout << endl;
-        fout << endl;
-        cout << "Полученная матрица: " << endl;
-        fout << "Полученная матрица: " << endl;
-        fout << "Количество вершин: " << n << endl;
+
         printMatrix(matrix, n, fout);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
