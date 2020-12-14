@@ -4,20 +4,26 @@
 #include <time.h>
 #include <locale.h>
 
-
-
-
+#define INF 50
 
 using namespace std;
 
-void printMatrix(int** matrix, int n, ofstream &fout) {
+// Вывод матрицы
+
+void printMatrix(int** matrix, int n, ofstream &fout, int a) {
     cout << "Исходная матрица: " << endl;
     fout << "Исходная матрица: " << endl;
     fout << "Количество вершин: " << n << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
+            if (matrix[i][j] >= INF && a ==1) {
+                cout << "INF" << " ";
+                fout << "INF" << " ";
+            }
+            else {
                 cout << matrix[i][j] << " ";
                 fout << matrix[i][j] << " ";
+            }
         }
         cout << endl;
         fout << endl;
@@ -26,7 +32,8 @@ void printMatrix(int** matrix, int n, ofstream &fout) {
     fout << endl;
 }
 
-//matrix - матрица смежности
+//Алгоритм Флойда-Уоршелла
+
 void originalFloydWarshall(int** matrix, int n) {
     //Пробегаемся по всем вершинам и ищем более короткий путь
     //через вершину k
@@ -35,10 +42,7 @@ void originalFloydWarshall(int** matrix, int n) {
             for (int j = 0; j < n; j++) {
                 //Новое значение ребра равно минимальному между старым
                 //и суммой ребер i <-> k + k <-> j (если через k пройти быстрее)
-                if (matrix[i][j] > matrix[i][k] + matrix[k][j])
-                {
-                    matrix[i][j] = matrix[i][k] + matrix[k][j];
-                }
+                matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j]);
             }
         }
     }
@@ -46,9 +50,16 @@ void originalFloydWarshall(int** matrix, int n) {
     return;
 }
 int main(int argc, char** argv) {
+    //matrix - матрица смежности
     ofstream fout("newMatrix.txt");
     setlocale(LC_ALL, "Rus");
+    // n - количество вершин
+    // numberEnter - номер выбранного варианта ввода матрицы
+    // numberVec - номер ввода для вида направленности графа
     int n, numberEnter, numberVec;
+    //а - для печатания в графе INF
+    int a = 1;
+    // proverka - переменная для проверки правильности варианта ввода
     bool proverka = false;
     cout << "Выберите как вы хотите задать матрицу смежности: " << endl << "1. Случайно сгенерировать" << endl << "2. Ввести вручную" << endl << "3. Ввести из файла" << endl;
     while (!proverka) {
@@ -62,14 +73,18 @@ int main(int argc, char** argv) {
         cout << "Введите количество вершин в матрице: ";
         scanf_s("%d", &n);
         cout << endl;
-        cout << "Выберите вид графа: " << endl << "1. Направленный" << endl << "2. Ненаправленный" << endl;
-        
-        int** matrix;
-        matrix = (int**)malloc(sizeof(int) * n);
+        cout << "Выберите вид графа: " << endl << "1. Ориентированный" << endl << "2. Неориентированный" << endl;
+
         srand(time(NULL));
 
+        
+
+        int** matrix; 
+        matrix = (int**)malloc(sizeof(int) * n); //выделяем память для 
+        
+
         for (int i = 0; i < n; i++) {
-            matrix[i] = (int*)malloc(sizeof(int) * n);
+            matrix[i] = (int*)malloc(sizeof(int) * n); // заполнения матрицы
         }
 
         proverka = false;
@@ -85,6 +100,8 @@ int main(int argc, char** argv) {
             }
         }
             
+        // Случайная генерация матрицы
+
         if (numberEnter == 1 || numberEnter == 2) {
                 for (int i = 0; i < n; i++)							//заполнение массива 
                 {
@@ -97,7 +114,7 @@ int main(int argc, char** argv) {
 
                         else
                         {
-                            matrix[i][j] = rand() % 101;
+                            matrix[i][j] = (rand() % 101) + 1;
                         }
                     }
                 }
@@ -117,13 +134,15 @@ int main(int argc, char** argv) {
         
 
         
-        printMatrix(matrix, n, fout);
+        printMatrix(matrix, n, fout, a);
         originalFloydWarshall(matrix, n);
         
-        
-        printMatrix(matrix, n, fout);
+        a = 2;
+        printMatrix(matrix, n, fout, a);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
+
+    // Ручной ввод
 
     if (numberEnter == 2) {
         cout << "Введите количество вершин в матрице: ";
@@ -131,9 +150,9 @@ int main(int argc, char** argv) {
         cout << endl;
         int** matrix;
         int numb;
-        matrix = (int**)malloc(sizeof(int) * n);
+        matrix = (int**)malloc(sizeof(int) * n); //выделяем память для
         for (int i = 0; i < n; i++) {
-            matrix[i] = (int*)malloc(sizeof(int) * n);
+            matrix[i] = (int*)malloc(sizeof(int) * n); //заполнения матрицы
         }
         for (int i = 0; i < n; i++) {
             cout << "Ввод " << i + 1 << "-й строки" << endl <<endl;
@@ -167,12 +186,14 @@ int main(int argc, char** argv) {
         }
 
         
-        printMatrix(matrix, n, fout);
+        printMatrix(matrix, n, fout, a);
         originalFloydWarshall(matrix, n);
-        
-        printMatrix(matrix, n, fout);
+        a = 2;
+        printMatrix(matrix, n, fout, a);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
+
+    // с Ввод с файла
 
     if (numberEnter == 3) {
         ifstream file("matrix.txt");
@@ -184,19 +205,20 @@ int main(int argc, char** argv) {
         file >> n;
         cout << "Количесвто вершин в матрице равно: " << n << endl;
 
-        int** matrix = (int**)malloc(sizeof(int) * n);
+        int** matrix = (int**)malloc(sizeof(int) * n); //выделяем память для
         for (int i = 0; i < n; i++) {
-            matrix[i] = (int*)malloc(sizeof(int) * n);
+            matrix[i] = (int*)malloc(sizeof(int) * n); //заполнения матрицы
         }
 
         //Считываем матрицу 
+        //return 1 - аварийное завершение
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 file >> matrix[i][j];
                 if (matrix[i][j] < 0) {
                     cout << "В матрице обнаружет отрицательный элемент. Исправьте матрицу." << endl;
                     system("pause");
-                    return 1;
+                    return 1; 
                 }
                 if (i == j) {
                     if (matrix[i][j] != 0) {
@@ -208,13 +230,13 @@ int main(int argc, char** argv) {
             }
         }
 
-        file.close();
+        file.close(); // закрываем файл
 
         
-        printMatrix(matrix, n, fout);
+        printMatrix(matrix, n, fout, a);
         originalFloydWarshall(matrix, n);
-
-        printMatrix(matrix, n, fout);
+        a = 2;
+        printMatrix(matrix, n, fout, a);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
     system("pause");
