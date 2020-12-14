@@ -34,7 +34,7 @@ void printMatrix(int** matrix, int n, ofstream &fout, int a) {
 
 //Алгоритм Флойда-Уоршелла
 
-void originalFloydWarshall(int** matrix, int n) {
+void originalFloyd(int** matrix, int n) {
     //Пробегаемся по всем вершинам и ищем более короткий путь
     //через вершину k
     for (int k = 0; k < n; k++) {
@@ -135,7 +135,7 @@ int main(int argc, char** argv) {
 
         
         printMatrix(matrix, n, fout, a);
-        originalFloydWarshall(matrix, n);
+        originalFloyd(matrix, n);
         
         a = 2;
         printMatrix(matrix, n, fout, a);
@@ -187,7 +187,7 @@ int main(int argc, char** argv) {
 
         
         printMatrix(matrix, n, fout, a);
-        originalFloydWarshall(matrix, n);
+        originalFloyd(matrix, n);
         a = 2;
         printMatrix(matrix, n, fout, a);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
@@ -234,7 +234,7 @@ int main(int argc, char** argv) {
 
         
         printMatrix(matrix, n, fout, a);
-        originalFloydWarshall(matrix, n);
+        originalFloyd(matrix, n);
         a = 2;
         printMatrix(matrix, n, fout, a);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
