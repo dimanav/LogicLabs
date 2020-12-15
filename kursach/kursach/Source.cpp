@@ -4,19 +4,19 @@
 #include <time.h>
 #include <locale.h>
 
-#define INF 50
+#define INF 999999999
 
 using namespace std;
 
 // Вывод матрицы
 
-void printMatrix(int** matrix, int n, ofstream &fout, int a) {
+void printMatrix(int** matrix, int n, ofstream &fout) {
     cout << "Исходная матрица: " << endl;
     fout << "Исходная матрица: " << endl;
     fout << "Количество вершин: " << n << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (matrix[i][j] >= INF && a ==1) {
+            if (matrix[i][j] >= INF) {
                 cout << "INF" << " ";
                 fout << "INF" << " ";
             }
@@ -24,6 +24,7 @@ void printMatrix(int** matrix, int n, ofstream &fout, int a) {
                 cout << matrix[i][j] << " ";
                 fout << matrix[i][j] << " ";
             }
+            
         }
         cout << endl;
         fout << endl;
@@ -32,7 +33,7 @@ void printMatrix(int** matrix, int n, ofstream &fout, int a) {
     fout << endl;
 }
 
-//Алгоритм Флойда-Уоршелла
+//Алгоритм Флойда
 
 void originalFloyd(int** matrix, int n) {
     //Пробегаемся по всем вершинам и ищем более короткий путь
@@ -57,10 +58,11 @@ int main(int argc, char** argv) {
     // numberEnter - номер выбранного варианта ввода матрицы
     // numberVec - номер ввода для вида направленности графа
     int n, numberEnter, numberVec;
-    //а - для печатания в графе INF
-    int a = 1;
+
     // proverka - переменная для проверки правильности варианта ввода
     bool proverka = false;
+    //ver - переменная, отвечающая за вероятность генерации связанной вершины
+    int ver;
     cout << "Выберите как вы хотите задать матрицу смежности: " << endl << "1. Случайно сгенерировать" << endl << "2. Ввести вручную" << endl << "3. Ввести из файла" << endl;
     while (!proverka) {
         scanf_s("%d", &numberEnter);
@@ -114,7 +116,15 @@ int main(int argc, char** argv) {
 
                         else
                         {
-                            matrix[i][j] = (rand() % 101) + 1;
+                            ver = rand() % 2;
+                            // вершины связаны
+                            if (ver == 1) {
+                                matrix[i][j] = rand() % 100;
+                            }
+                            // вершины не связаны
+                            else {
+                                matrix[i][j] = INF;
+                            }
                         }
                     }
                 }
@@ -134,11 +144,10 @@ int main(int argc, char** argv) {
         
 
         
-        printMatrix(matrix, n, fout, a);
+        printMatrix(matrix, n, fout);
         originalFloyd(matrix, n);
         
-        a = 2;
-        printMatrix(matrix, n, fout, a);
+        printMatrix(matrix, n, fout);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
 
@@ -186,11 +195,12 @@ int main(int argc, char** argv) {
         }
 
         
-        printMatrix(matrix, n, fout, a);
+        printMatrix(matrix, n, fout);
         originalFloyd(matrix, n);
-        a = 2;
-        printMatrix(matrix, n, fout, a);
-        cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
+ 
+        printMatrix(matrix, n, fout);
+        cout << endl
+ << "Результат сохранён в файл newMatrix.txt" << endl;
     }
 
     // с Ввод с файла
@@ -233,10 +243,9 @@ int main(int argc, char** argv) {
         file.close(); // закрываем файл
 
         
-        printMatrix(matrix, n, fout, a);
+        printMatrix(matrix, n, fout);
         originalFloyd(matrix, n);
-        a = 2;
-        printMatrix(matrix, n, fout, a);
+        printMatrix(matrix, n, fout);
         cout << endl << "Результат сохранён в файл newMatrix.txt" << endl;
     }
     system("pause");
