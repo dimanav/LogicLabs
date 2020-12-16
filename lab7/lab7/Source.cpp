@@ -33,7 +33,7 @@ void bfsd(int** p, int n, int* dist, int v)
 
 			for (int i = 0; i < n; i++)
 			{
-				if (p[v][i] > 0 && dist[i] > dist[v] + p[v][i] && dist[i] == 1000)
+				if (p[v][i] > 0 && dist[i] > dist[v] + p[v][i])
 				{
 					q.push(i);
 					dist[i] = dist[v] + p[v][i];
