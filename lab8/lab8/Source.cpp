@@ -41,14 +41,10 @@ void BFS() {
 		for (int i = 0; i < m; i++)
 		{
 			
-			//проверка на изолированную вершину
-			if (vis[i] == 1000) {
-				printf("- ");
-				vis[i] = 0;
-			}
+			
 			//вывод вершин
-			else
-				printf("%d ", vis[i]);
+			
+			printf("%d ", vis[i]);
 
 			if (vis[i] > ex[st])
 			{
