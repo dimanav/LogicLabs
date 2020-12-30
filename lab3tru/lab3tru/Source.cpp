@@ -402,7 +402,6 @@ int main() {
 					p1[i][j] = p[i][j];
 				}
 			}
-
 			system("pause");
 			continue;
 		}

@@ -95,9 +95,9 @@ void BFS() {
 			printf("%d ", i + 1);
 		}
 
-
+		deg = 0;
 	}
-	deg = 0;
+	
 	printf("\nДоминирующие вершины: \n");
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < m; j++) {
@@ -109,7 +109,7 @@ void BFS() {
 		if (deg == m - 1) {
 			printf("%d ", i + 1);
 		}
-
+		deg = 0;
 
 	}
 	printf("\nКонцевые вершины: \n");
@@ -123,7 +123,7 @@ void BFS() {
 		if (deg == 1) {
 			printf("%d ", i + 1);
 		}
-		
+		deg = 0;
 		
 	}
 }
@@ -145,7 +145,6 @@ void main(void)
 		graph[i] = new int[m];
 	}
 	//генерация матрицы
-	int start;
 	printf("Матрица смежности: \n");
 	srand(time(NULL));
 	for (i = 0; i < m; ++i) {

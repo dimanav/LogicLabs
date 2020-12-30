@@ -1,4 +1,4 @@
 ﻿  Source.cpp
 C:\Users\miten\OneDrive\Рабочий стол\labs\lab3tru\lab3tru\Source.cpp(297,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\miten\OneDrive\Рабочий стол\labs\lab3tru\lab3tru\Source.cpp(444,14): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\miten\OneDrive\Рабочий стол\labs\lab3tru\lab3tru\Source.cpp(443,14): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   lab3tru.vcxproj -> C:\Users\miten\OneDrive\Рабочий стол\labs\lab3tru\Debug\lab3tru.exe
